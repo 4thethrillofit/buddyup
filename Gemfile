@@ -15,6 +15,13 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+group :test do
+  gem 'capybara'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'simplecov', :require => false
+end
+
 gem 'jquery-rails'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
