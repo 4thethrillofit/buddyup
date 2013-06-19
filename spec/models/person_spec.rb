@@ -19,7 +19,10 @@ describe Person do
 
       context 'email' do
         it { should validate_presence_of(:email) }
-        it { should validate_uniqueness_of(:email) }
+        it 'should validate uniqueness of email' do
+          person = FactoryGirl.create(:person, name: 'fei', email: 'fei@gmail.com')
+          person.should validate_uniqueness_of(:email)
+        end
         it { should_not allow_value('sfd.com').for(:email) }
         it { should allow_value('sfd@gmail.com').for(:email) }
         it { should allow_mass_assignment_of(:email) }
@@ -28,6 +31,11 @@ describe Person do
       context 'buddy_id' do
         it { should_not allow_mass_assignment_of(:buddy_id) }
       end
+    end
+
+    describe 'associations' do
+      it { should have_many(:team_assignments) }
+      it { should have_many(:teams).through(:team_assignments) }
     end
   end
 end

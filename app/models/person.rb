@@ -6,5 +6,7 @@ class Person < ActiveRecord::Base
   validates :name, :presence => true
   validates :email, :presence => true,
                     :format => { :with => EMAIL_REGEX },
-                    :uniqueness => { case_sensitive: false }
+                    :uniqueness => true
+  has_many :team_assignments
+  has_many :teams, :through => :team_assignments
 end

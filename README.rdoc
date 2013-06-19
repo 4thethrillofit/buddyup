@@ -14,7 +14,9 @@ People: name, email(unique), buddy_id
 Team: name(uniq)
   team has and belongs to many people thru team_assignment
   team has many permutations
-team_assignment: buddy_id, [OPTIONAL]assigned(bool)
+
+team_assignment: OPTIONAL]assigned(bool)
+
 BuddyPermutations: permutation, team foreign key
   permutation belongs to team
 

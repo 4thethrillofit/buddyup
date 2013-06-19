@@ -9,6 +9,7 @@ describe Team do
       its(:name) { should eq 'bears' }
       it { should be_valid }
     end
+  end
 
   describe 'validations' do
     context 'name' do
@@ -18,5 +19,9 @@ describe Team do
     end
   end
 
+  describe 'associations' do
+    it { should have_many(:team_assignments) }
+    it { should have_many(:team_members).through(:team_assignments) }
   end
+
 end
