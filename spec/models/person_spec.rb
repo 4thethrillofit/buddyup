@@ -26,6 +26,12 @@ describe Person do
         it { should_not allow_value('sfd.com').for(:email) }
         it { should allow_value('sfd@gmail.com').for(:email) }
         it { should allow_mass_assignment_of(:email) }
+        it 'downcases email before saving' do
+          person = FactoryGirl.build(:person, name: 'fei', email:'FEi@g.com')
+          expect { person.save }.to change {
+            person.email
+          }.from('FEi@g.com').to('fei@g.com')
+        end
       end
 
       context 'buddy_id' do

@@ -5,5 +5,5 @@ class Team < ActiveRecord::Base
                    :length => { :maximum => 10 }
 
   has_many :team_assignments
-  has_many :team_members, :source => :people, :through => :team_assignments
+  has_many :members, :source => :person, :through => :team_assignments
 end

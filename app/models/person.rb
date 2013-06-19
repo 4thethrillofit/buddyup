@@ -9,4 +9,10 @@ class Person < ActiveRecord::Base
                     :uniqueness => true
   has_many :team_assignments
   has_many :teams, :through => :team_assignments
+  before_save :downcase_email
+
+private
+  def downcase_email
+    email.downcase!
+  end
 end
