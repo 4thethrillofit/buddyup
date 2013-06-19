@@ -3,3 +3,7 @@ You should supply a README that covers the following topics:
 Instructions on how to run and use your app
 What design decisions you made
 How you tested your app
+
+Generate unique permutations of team arrangements.
+Make rake task?
+[1,2,3].permutation(2).to_a.map(&:sort).uniq
