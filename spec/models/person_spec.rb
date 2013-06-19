@@ -26,8 +26,6 @@ describe Person do
       end
 
       context 'buddy_id' do
-        # it { should validate_uniqueness_of(:buddy_id) }
-        # it { should validate_numericality_of(:buddy_id) }
         it { should_not allow_mass_assignment_of(:buddy_id) }
       end
     end
