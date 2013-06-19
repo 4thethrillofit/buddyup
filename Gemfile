@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 
 gem 'pg'
+gem 'jquery-rails'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -21,8 +23,3 @@ group :test do
   gem 'factory_girl_rails'
   gem 'simplecov', :require => false
 end
-
-gem 'jquery-rails'
-
-gem 'bcrypt-ruby', '~> 3.0.0'
-
