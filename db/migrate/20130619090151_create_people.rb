@@ -3,7 +3,7 @@ class CreatePeople < ActiveRecord::Migration
     create_table :people do |t|
       t.string :name, :null => false
       t.string :email, :null => false
-      t.boolean :assigned, :null => false, :default => false
+      t.integer :buddy_id
       t.timestamps
     end
 

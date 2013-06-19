@@ -14,11 +14,11 @@
 ActiveRecord::Schema.define(:version => 20130619090151) do
 
   create_table "people", :force => true do |t|
-    t.string   "name",                          :null => false
-    t.string   "email",                         :null => false
-    t.boolean  "assigned",   :default => false, :null => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.string   "name",       :null => false
+    t.string   "email",      :null => false
+    t.integer  "buddy_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "people", ["name"], :name => "index_people_on_name", :unique => true
