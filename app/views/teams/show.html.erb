@@ -1,0 +1,11 @@
+<div class='row team-members'>
+  <% team = TeamPresenter.new(@team, self) %>
+  <h3>Team: <%= team.name %></h3>
+  <%= link_to 'Delete Team', team_path(@team), method: 'DELETE' %>
+  <h4>Members</h4>
+  <ul>
+    <% team.members.each do |member| %>
+      <li><%= member.name %>, <%= member.email %></li>
+    <% end %>
+  </ul>
+</div>

@@ -1,9 +1,7 @@
 <div class='row teams'>
-
-<ul>
-<% @teams.each do |t| %>
-  <li><%= t.name %> <%= link_to 'Delete Team', team_path(t), method: 'DELETE' %></li>
-<% end %>
-</ul>
-
+  <ul>
+    <% TeamsPresenter.new(@teams, self).team_presenters.each do |team| %>
+      <li><%= link_to team.name, team_path(team.object) %></li>
+    <% end %>
+  </ul>
 </div>

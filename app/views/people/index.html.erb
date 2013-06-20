@@ -4,7 +4,7 @@
   <% #end %>
   <ul>
   <% PeoplePresenter.new(@people, self).person_presenters.each do |person| %>
-    <li><%= person.name %>, <%= person.email %>, <%= link_to 'Delete Person', person_path(person.object), method: 'DELETE' %></li>
+    <li><%= person.name %>, <%= person.email %></li>
   <% end %>
   </ul>
 </div>
