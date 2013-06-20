@@ -1,5 +1,8 @@
+<div class='new-person-form'>
 <%= form_for @person do |f| %>
+  <%= render 'shared/error_messages', :target => @person %>
   <%= f.text_field :name, placeholder: 'Name' %>
   <%= f.text_field :email, placeholder: 'Email' %>
   <%= f.submit "Submit", class: 'btn btn-warning' %>
 <% end %>
+</div>

@@ -8,23 +8,22 @@ class PeopleController < ApplicationController
   end
 
   def create
-    person = Person.new(params[:person])
-    if person.save
-      flash[:info] = "Person successfully created."
-      redirect_to root_path
+    @person = Person.new(params[:person])
+    if @person.save
+      flash[:success] = "Person successfully created."
+      redirect_to request.referer
     else
-      flash[:error] = "There was a problem."
-      render 'new'
+      render :new
     end
   end
 
-  def show
-    @person = Person.find_by_id(params[:id])
-  end
+  # def show
+  #   @person = Person.find_by_id(params[:id])
+  # end
 
   def destroy
     Person.destroy(params[:id])
     flash[:warning] = 'Person successfully deleted.'
-    redirect_to root_path
+    redirect_to request.referer
   end
 end
