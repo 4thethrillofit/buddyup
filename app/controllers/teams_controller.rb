@@ -11,7 +11,7 @@ class TeamsController < ApplicationController
     @team = Team.new(params[:team])
     if @team.save
       flash[:success] = "Team successfully created."
-      redirect_to request.referrer
+      redirect_to teams_path
     else
       render :new
     end
@@ -23,6 +23,7 @@ class TeamsController < ApplicationController
 
   def destroy
     Team.destroy(params[:id])
+    flash[:success] = "Team successfully deleted."
     redirect_to request.referrer
   end
 end

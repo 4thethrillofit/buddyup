@@ -1,0 +1,7 @@
+<div class='new-team-form'>
+<%= form_for @team do |f| %>
+  <%= render 'shared/error_messages', :target => @team %>
+  <%= f.text_field :name, placeholder: 'Team Name' %>
+  <%= f.submit 'Submit', class: 'btn btn-warning' %>
+<% end %>
+</div>

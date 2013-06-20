@@ -1,0 +1,9 @@
+<div class='row teams'>
+
+<ul>
+<% @teams.each do |t| %>
+  <li><%= t.name %> <%= link_to 'Delete Team', team_path(t), method: 'DELETE' %></li>
+<% end %>
+</ul>
+
+</div>
