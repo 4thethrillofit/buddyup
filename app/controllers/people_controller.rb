@@ -17,13 +17,9 @@ class PeopleController < ApplicationController
     end
   end
 
-  # def show
-  #   @person = Person.find_by_id(params[:id])
-  # end
-
   def destroy
     Person.destroy(params[:id])
-    flash[:warning] = 'Person successfully deleted.'
+    flash[:success] = 'Person successfully deleted.'
     redirect_to request.referer
   end
 end
