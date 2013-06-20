@@ -2,7 +2,9 @@
   <% #present @people do |person| %>
 
   <% #end %>
+  <ul>
   <% PeoplePresenter.new(@people, self).names.each do |name| %>
-    <%= name %>
+    <li><%= name %></li>
   <% end %>
+  </ul>
 </div>

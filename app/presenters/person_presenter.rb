@@ -5,4 +5,8 @@ class PersonPresenter < BasePresenter
     person.name.capitalize
   end
 
+  def email
+    person.email
+  end
+
 end

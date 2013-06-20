@@ -1,0 +1,3 @@
+class TeamsPresenter < BasePresenter
+
+end
