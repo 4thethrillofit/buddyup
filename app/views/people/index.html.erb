@@ -3,8 +3,8 @@
 
   <% #end %>
   <ul>
-  <% PeoplePresenter.new(@people, self).names.each do |name| %>
-    <li><%= name %></li>
+  <% PeoplePresenter.new(@people, self).person_presenters.each do |person| %>
+    <li><%= person.name %>, <%= person.email %>, <%= link_to 'Delete Person', person_path(person.object), method: 'DELETE' %></li>
   <% end %>
   </ul>
 </div>

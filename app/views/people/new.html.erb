@@ -1,0 +1,5 @@
+<%= form_for @person do |f| %>
+  <%= f.text_field :name, placeholder: 'Name' %>
+  <%= f.text_field :email, placeholder: 'Email' %>
+  <%= f.submit "Submit", class: 'btn btn-warning' %>
+<% end %>

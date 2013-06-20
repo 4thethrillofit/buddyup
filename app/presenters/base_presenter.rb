@@ -1,4 +1,5 @@
 class BasePresenter
+  attr_reader :object
   def initialize(object, template)
     @object = object
     @template = template
@@ -9,6 +10,10 @@ class BasePresenter
     define_method(name) do
       @object
     end
+  end
+
+  def get_id
+    @object.id
   end
 
 private

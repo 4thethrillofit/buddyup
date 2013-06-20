@@ -1,11 +1,18 @@
 class PeoplePresenter < BasePresenter
-  presents :people
+  #the instance variable
+  # presents :people
+  attr_reader :person_presenters
+
+  def initialize(people, template)
+    super(people, template)
+    @person_presenters = people.map { |person| PersonPresenter.new(person, template) }
+  end
 
   def names
-    people.map { |person| PersonPresenter.new(person, @template).name }
+    person_presenters.map { |person| person.name }
   end
 
   def emails
-    people.map { |person| PersonPresenter.new(person, @template) }
+    person_presenters.map { |person| person.email }
   end
 end

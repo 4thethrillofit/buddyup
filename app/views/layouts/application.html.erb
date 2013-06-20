@@ -11,7 +11,9 @@
   </script>
 </head>
 <body>
-  <div class='container'>
+  <%= render :partial => 'layouts/header' %>
+  <div class='main container'>
+    <%= render :partial => 'layouts/flash_message' %>
     <%= yield %>
   </div>
 </body>
