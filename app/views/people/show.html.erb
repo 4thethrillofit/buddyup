@@ -2,4 +2,6 @@
   <% present @person do |person_presenter| %>
     <%= person_presenter.name %>
   <% end %>
+  <% p = PersonPresenter.new(@person, self) %>
+  <%= p.name %>
 </div>

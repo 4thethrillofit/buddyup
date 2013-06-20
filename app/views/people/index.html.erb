@@ -1,4 +1,8 @@
 <div class='row'>
-  <% present @people do |person| %>
+  <% #present @people do |person| %>
+
+  <% #end %>
+  <% PeoplePresenter.new(@people, self).names.each do |name| %>
+    <%= name %>
   <% end %>
 </div>

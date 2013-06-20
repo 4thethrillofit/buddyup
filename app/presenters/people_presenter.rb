@@ -1,17 +1,9 @@
-class PeoplePresenter
-  def initialize(people, template)
-    @people = people
-    @template = template
-  end
+class PeoplePresenter < BasePresenter
+  presents :people
 
-  #draper gem pattern
-  def h
-    @template
+  def names
+    people.map do |person|
+      PersonPresenter.new(person, @template).name
+    end
   end
-
-  # def name(person)
-  #   # @people.map do |person|
-  #     person.name
-  #   # end
-  # end
 end

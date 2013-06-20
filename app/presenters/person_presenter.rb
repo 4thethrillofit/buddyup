@@ -1,15 +1,8 @@
-class PersonPresenter
-  def initialize(person, template)
-    @person = person
-    @template = template
-  end
-
-  def h
-    @template
-  end
+class PersonPresenter < BasePresenter
+  presents :person
 
   def name
-    @person.name.capitalize
+    person.name.capitalize
   end
 
 end
