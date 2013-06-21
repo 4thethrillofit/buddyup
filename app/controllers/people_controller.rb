@@ -9,8 +9,6 @@ class PeopleController < ApplicationController
   end
 
   def create
-    debugger
-    # params[:person][:team][:name]
     @person = Person.new(params[:person])
     if @person.save
       flash[:success] = "Person successfully created."
