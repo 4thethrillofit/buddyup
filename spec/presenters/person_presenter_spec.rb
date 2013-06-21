@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe PersonPresenter do
   let(:person) { FactoryGirl.create(:person, name: 'fei', email: 'fei@g.com') }
-  let(:presenter) { PersonPresenter.new(person, view) }
+  subject(:presenter) { PersonPresenter.new(person, view) }
 
   it 'should capitalize the name' do
     presenter.name.should eq 'Fei'

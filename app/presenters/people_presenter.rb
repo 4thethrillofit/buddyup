@@ -1,10 +1,7 @@
 class PeoplePresenter < BasePresenter
-  #the instance variable
-  # presents :people
   attr_reader :person_presenters
-
   def initialize(people, template)
-    super(people, template)
+    # super(people, template)
     @person_presenters = people.map { |person| PersonPresenter.new(person, template) }
   end
 
