@@ -3,6 +3,12 @@
   <%= render 'shared/error_messages', :target => @person %>
   <%= f.text_field :name, placeholder: 'Name' %>
   <%= f.text_field :email, placeholder: 'Email' %>
+  <input name='team' placeholder='Team Name' class='team-input'></input>
   <%= f.submit "Submit", class: 'btn btn-warning' %>
 <% end %>
 </div>
+<section class='team-list'></section>
+
+<% content_for :js_footer do%>
+  PageContent.teamSuggestions = <%= @teams.to_json.html_safe %>;
+<% end %>

@@ -16,5 +16,11 @@
     <%= render :partial => 'layouts/flash_message' %>
     <%= yield %>
   </div>
+
+  <script>
+  $(document).ready(function(){
+    <%= content_for :js_footer %>
+  });
+  </script>
 </body>
 </html>

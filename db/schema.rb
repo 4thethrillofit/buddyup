@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20130619204326) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "people", ["name"], :name => "index_people_on_name", :unique => true
+  add_index "people", ["email"], :name => "index_people_on_email", :unique => true
 
   create_table "team_assignments", :force => true do |t|
     t.integer  "person_id"
