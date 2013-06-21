@@ -11,6 +11,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
   config.include Capybara::DSL
+  config.include ActionView::TestCase::Behavior, example_group: {file_path: %r{spec/presenters}}
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
