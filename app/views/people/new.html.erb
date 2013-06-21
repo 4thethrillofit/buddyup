@@ -3,7 +3,9 @@
   <%= render 'shared/error_messages', :target => @person %>
   <%= f.text_field :name, placeholder: 'Name' %>
   <%= f.text_field :email, placeholder: 'Email' %>
-  <input name='team' placeholder='Team Name' class='team-input'></input>
+  <%= f.fields_for :team do |af| %>
+    <%= af.text_field :name, placeholder: "Team Name" %>
+  <% end %>
   <%= f.submit "Submit", class: 'btn btn-warning' %>
 <% end %>
 </div>

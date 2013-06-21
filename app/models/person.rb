@@ -7,7 +7,7 @@ class Person < ActiveRecord::Base
   validates :email, :presence => true,
                     :format => { :with => EMAIL_REGEX },
                     :uniqueness => true
-  has_many :team_assignments
+  has_many :team_assignments, :dependent => :destroy
   has_many :teams, :through => :team_assignments
   before_save :downcase_email
   accepts_nested_attributes_for :teams
