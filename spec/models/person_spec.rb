@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe Person do
-  let(:person) { FactoryGirl.build(:person, name: 'fei', email: 'fei@gmail.com') }
-  subject { person }
+  let(:team1) { FactoryGirl.build(:team, name: 'bears') }
+  let(:team2) { FactoryGirl.build(:team, name: 'lions') }
+  subject(:person) { FactoryGirl.build(:person, name: 'fei', email: 'fei@gmail.com', team_names: 'bears, lions' ) }
 
   describe 'create new person' do
     context 'with valid information' do
@@ -42,6 +43,13 @@ describe Person do
     describe 'associations' do
       it { should have_many(:team_assignments) }
       it { should have_many(:teams).through(:team_assignments) }
+    end
+  end
+
+  describe "assign teams after create" do
+    it 'should assign the person to teams after saving' do
+      person.save
+      person.teams.map(&:name).should include('bears', 'lions')
     end
   end
 end

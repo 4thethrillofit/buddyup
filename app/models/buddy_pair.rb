@@ -1,3 +1,4 @@
 class BuddyPair < ActiveRecord::Base
-  attr_accessible :team_id, :permutation
+  attr_accessible :permutation
+  # belongs_to :team
 end

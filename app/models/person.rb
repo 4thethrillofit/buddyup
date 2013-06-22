@@ -21,7 +21,7 @@ class Person < ActiveRecord::Base
 private
   def assign_teams
     if @team_names
-      self.teams = @team_names.split(',').map do |name|
+      self.teams = @team_names.split(',').map(&:strip).map do |name|
         Team.find_or_create_by_name(name)
       end
     end

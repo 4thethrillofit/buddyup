@@ -6,13 +6,11 @@ FactoryGirl.define do
 
   factory :team do
     sequence(:name) { |n| "Team#{n}" }
-    # factory :team_with_members do
-    #   ignore do
-    #     member_count 5
-    #   end
-    #   after(:create) do |member, evaluator|
-    #     FactoryGirl.create_list(:person, 3, member: member)
-    #   end
-    # end
+    team_names
+  end
+
+  factory :buddy_pair do
+    sequence(:permutation) { |n| [n, n+1] }
+    sequence(:team_id) { |n| n }
   end
 end
