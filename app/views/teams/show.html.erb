@@ -1,11 +1,18 @@
 <div class='row team-members'>
   <% team = TeamPresenter.new(@team, self) %>
   <h3>Team: <%= team.name %></h3>
-  <%= link_to 'Delete Team', team_path(@team), method: 'DELETE' %>
+  <%= link_to 'Delete Team', team_path(@team), method: 'DELETE', class: "btn btn-danger" %>
+  <%= form_for :team, url: team_team_assignments_path(@team) do |f| %>
+    <%= render 'shared/error_messages', :target => @team %>
+    <%= f.label "Add members by email:" %>
+    <%= f.text_field :member_email, placeholder: "Member Email" %>
+    <%= f.submit "Submit", class: 'btn btn-warning' %>
+  <% end %>
+
   <h4>Members</h4>
   <ul>
     <% team.members.each do |member| %>
-      <li><%= member.name %>, <%= member.email %></li>
+      <li><%= member.name %>, <%= member.email %> <%= link_to "Remove Member", team_team_assignment_path(member.object), method: "DELETE", class: "btn btn-danger" %></li>
     <% end %>
   </ul>
 </div>

@@ -12,7 +12,7 @@ class PeopleController < ApplicationController
     @person = Person.new(params[:person])
     if @person.save
       flash[:success] = "Person successfully created."
-      redirect_to request.referer
+      redirect_to root_path
     else
       render :new
     end
