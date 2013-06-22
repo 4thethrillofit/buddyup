@@ -22,6 +22,7 @@ describe Team do
   describe 'associations' do
     it { should have_many(:team_assignments) }
     it { should have_many(:members).through(:team_assignments) }
+    it { should have_many(:buddy_pairs) }
   end
 
 end

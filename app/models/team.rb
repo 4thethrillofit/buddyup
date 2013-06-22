@@ -7,7 +7,7 @@ class Team < ActiveRecord::Base
 
   has_many :team_assignments, :dependent => :destroy
   has_many :members, :source => :person, :through => :team_assignments
-  # has_many :buddy_pairs
+  has_many :buddy_pairs
 
   def member_email=(email)
     self.members = Person.find_by_name(email)
