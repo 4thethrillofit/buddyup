@@ -6,6 +6,7 @@ gem 'pg'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'activerecord-postgres-array'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
