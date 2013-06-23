@@ -1,3 +1,14 @@
+GIT
+  remote: git://github.com/jnicklas/capybara.git
+  revision: 89ba2c6ecc8666e5a4d6a8b61d69968d04a71bc9
+  specs:
+    capybara (2.1.0)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -34,12 +45,6 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
-    capybara (2.1.0)
-      mime-types (>= 1.16)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      xpath (~> 2.0)
     coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -98,8 +103,10 @@ GEM
       treetop (~> 1.4.8)
     method_source (0.8.1)
     mime-types (1.23)
+    mini_portile (0.5.0)
     multi_json (1.7.7)
-    nokogiri (1.5.9)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
     pg (0.15.1)
     polyglot (0.3.3)
     pry (0.9.12.2)
@@ -186,7 +193,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-postgres-array
   bcrypt-ruby (~> 3.0.0)
-  capybara
+  capybara!
   coffee-rails (~> 3.2.1)
   database_cleaner
   debugger

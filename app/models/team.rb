@@ -14,12 +14,12 @@ class Team < ActiveRecord::Base
   end
 
   def generate_pair_records
-    self.generate_permutations.each do |pair|
+    generate_permutations.each do |pair|
       self.buddy_pairs.create(permutation: pair)
     end
   end
 
-# private
+private
   def generate_permutations
     #pluck out all person_id for a given team and generate unique permutations
     #would rather use #pluck(:id) but use map to make rspec work.
