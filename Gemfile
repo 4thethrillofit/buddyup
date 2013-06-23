@@ -25,4 +25,6 @@ group :test do
   gem 'factory_girl_rails'
   gem 'simplecov', :require => false
   gem "guard-rspec"
+  gem 'database_cleaner'
+  gem 'launchy'
 end

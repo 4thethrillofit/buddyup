@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Person do
-  let(:team1) { FactoryGirl.build(:team, name: 'bears') }
-  let(:team2) { FactoryGirl.build(:team, name: 'lions') }
-  subject(:person) { FactoryGirl.build(:person, name: 'fei', email: 'fei@gmail.com', team_names: 'bears, lions' ) }
+  let(:team1) { build(:team, name: 'bears') }
+  let(:team2) { build(:team, name: 'lions') }
+  subject(:person) { build(:person, name: 'fei', email: 'fei@gmail.com', team_names: 'bears, lions' ) }
 
   describe 'create new person' do
     context 'with valid information' do

@@ -13,8 +13,16 @@ class Team < ActiveRecord::Base
     self.members = Person.find_by_name(email)
   end
 
-  def assign_buddy_pair
-    # self.members
+  def generate_pair_records
+    self.generate_permutations.each do |pair|
+      self.buddy_pairs.create(permutation: pair)
+    end
   end
 
+# private
+  def generate_permutations
+    #pluck out all person_id for a given team and generate unique permutations
+    #would rather use #pluck(:id) but use map to make rspec work.
+    self.members.map(&:id).permutation(2).to_a.map(&:sort).uniq
+  end
 end

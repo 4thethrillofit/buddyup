@@ -1,7 +1,6 @@
 class BuddyPair < ActiveRecord::Base
   attr_accessible :permutation
-  validates_presence_of :permutation
-  validates_presence_of :team_id
+  validates_presence_of :permutation, :team_id
   validate :check_data_type
   belongs_to :team
 
