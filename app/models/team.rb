@@ -22,6 +22,7 @@ class Team < ActiveRecord::Base
 
   def generate_pair_for_new_member(member)
     self.members.pluck(:id).each do |existing_member_id|
+      next if member.id == existing_member_id
       pair = [member.id, existing_member_id].sort
       self.buddy_pairs.create(permutation: pair)
     end
@@ -30,7 +31,6 @@ class Team < ActiveRecord::Base
 private
   def generate_permutations
     #pluck out all person_id for a given team and generate unique permutations
-    #would rather use #pluck(:id) but use map to make rspec work.
     self.members.pluck(:id).permutation(2).to_a.map(&:sort).uniq
   end
 end

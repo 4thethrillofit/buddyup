@@ -21,9 +21,11 @@ class Person < ActiveRecord::Base
 private
   def assign_teams
     if @team_names
-      self.teams = @team_names.split(',').map(&:strip).map do |name|
+      teams = @team_names.split(',').map(&:strip).map do |name|
         Team.find_or_create_by_name(name)
       end
+      self.teams = teams
+      teams.each { |team| team.generate_pair_for_new_member(self) }
     end
   end
 

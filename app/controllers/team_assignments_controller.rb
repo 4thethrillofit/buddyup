@@ -5,6 +5,7 @@ class TeamAssignmentsController < ApplicationController
     if @member
       flash[:success] = "Team member successfully added!"
       @team.members << @member
+      @team.generate_pair_for_new_member(@member)
       redirect_to team_path(@team)
     else
       flash[:warning] = "Person does not exist :("
