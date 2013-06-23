@@ -27,4 +27,8 @@ class TeamsController < ApplicationController
     flash[:success] = "Team successfully deleted."
     redirect_to request.referrer
   end
+
+  def send_weekly_pairs
+    # raise params.inspect
+  end
 end

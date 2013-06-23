@@ -4,8 +4,8 @@ Buddyup::Application.routes.draw do
 
   resources :teams, :except => [:edit, :update] do
     resources :team_assignments, :only => [:create, :destroy]
-    # collection do
-    #   get '/send_weekly_pairs'
-    # end
+    member do
+      get 'send_weekly_pairs' => 'teams#send_weekly_pairs'
+    end
   end
 end
