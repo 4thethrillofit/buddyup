@@ -39,4 +39,19 @@ describe Team do
     end
   end
 
+  describe '#generate_pair_for_new_member' do
+    it 'should generate a buddy_pair for new member with all members of the team' do
+      team = create(:team)
+      team.members << member1
+      team.members << member2
+      team.members << member3
+      #coupling with #generate_pair_records?
+      team.generate_pair_records
+      original_pair_count = team.buddy_pairs.count
+      expect { team.generate_pair_for_new_member(member1) }.to change {
+        team.buddy_pairs.count
+      }.by(original_pair_count)
+    end
+  end
+
 end
