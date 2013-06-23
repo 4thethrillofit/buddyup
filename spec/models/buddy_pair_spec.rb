@@ -30,3 +30,4 @@ describe BuddyPair do
   end
 
 end
+
