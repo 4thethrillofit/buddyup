@@ -44,6 +44,11 @@ class Team < ActiveRecord::Base
     weekly_pairs
   end
 
+  def destroy_related_pairs(member)
+    #destroy_all or delete_all do not work here on the array
+    self.buddy_pairs.select{|pair| pair.permutation.include?(member.id) }.each(&:destroy)
+  end
+
 private
   def generate_permutations
     #pluck out all person_id for a given team and generate unique permutations
