@@ -29,7 +29,6 @@ class Team < ActiveRecord::Base
   end
 
   def generate_weekly_pairs
-    reset_pair_records if all_pairs_assigned?
     weekly_pair = []
     self.buddy_pairs.each do |pair_obj|
       pair_ids = pair_obj.permutation
@@ -41,7 +40,7 @@ class Team < ActiveRecord::Base
       weekly_pair.push([person1, person2])
     end
     BuddyPair.clean_weekly_pair_records
-    # pair_obj.clean_weekly_pair_records
+    reset_pair_records if all_pairs_assigned?
     weekly_pair
   end
 
