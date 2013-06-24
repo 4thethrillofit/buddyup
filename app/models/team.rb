@@ -29,8 +29,9 @@ class Team < ActiveRecord::Base
   end
 
   def generate_weekly_pairs
+    BuddyPair.clean_weekly_pair_records
     weekly_pairs = []
-    self.buddy_pairs.each do |pair_obj|
+    self.buddy_pairs.shuffle.each do |pair_obj|
       pair_ids = pair_obj.permutation
       person1 = Person.find_by_id(pair_ids[0])
       person2 = Person.find_by_id(pair_ids[1])
@@ -39,14 +40,23 @@ class Team < ActiveRecord::Base
       pair_obj.update_attribute(:has_been_assigned, true)
       weekly_pairs.push([person1, person2])
     end
-    BuddyPair.clean_weekly_pair_records
     reset_pair_records if all_pairs_assigned?
-    weekly_pairs
+    orphans = assign_any_orphan_members
+    weekly_pairs += orphans
   end
 
   def destroy_related_pairs(member)
     #destroy_all or delete_all do not work here on the array
-    self.buddy_pairs.select{|pair| pair.permutation.include?(member.id) }.each(&:destroy)
+    self.buddy_pairs.select{|pair| pair.permutation.include?(member.id) }.each(&:delete)
+  end
+
+  def assign_any_orphan_members
+    orphans = members.where(:buddy_pair_id => nil).shuffle
+    pairs = []
+    while orphans.any?
+      pairs.push orphans.pop(2)
+    end
+    pairs
   end
 
 private
@@ -70,5 +80,9 @@ private
 
   def reset_pair_records
     buddy_pairs.update_all(:has_been_assigned => false)
+  end
+
+  def orphan_members
+    members.where(:buddy_pair_id => nil)
   end
 end

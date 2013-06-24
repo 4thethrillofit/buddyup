@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20130622184716) do
     t.datetime      "updated_at",                           :null => false
   end
 
-  add_index "buddy_pairs", ["permutation", "team_id"], :name => "index_buddy_pairs_on_permutation_and_team_id", :unique => true
+  add_index "buddy_pairs", ["permutation", "team_id"], :name => "index_buddy_pairs_on_permutation_and_team_id"
   add_index "buddy_pairs", ["team_id"], :name => "index_buddy_pairs_on_team_id"
 
   create_table "people", :force => true do |t|

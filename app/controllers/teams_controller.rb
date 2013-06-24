@@ -34,4 +34,10 @@ class TeamsController < ApplicationController
   end
 end
 
-
+pairs = []
+a = [1,2,3,4]
+a.shuffle
+while a.any?
+  pairs.push a.pop(2)
+end
+pairs

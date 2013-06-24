@@ -8,6 +8,6 @@ class CreateBuddyPairs < ActiveRecord::Migration
     end
 
     add_index :buddy_pairs, :team_id
-    add_index :buddy_pairs, [:permutation, :team_id], :unique => true
+    add_index :buddy_pairs, [:permutation, :team_id]
   end
 end
