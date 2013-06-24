@@ -3,10 +3,10 @@
 <p>Hello <%= PersonPresenter.new(@person, self).name %>,</p>
 
 <p>
-This week, you will be pairing with
+As part of <%= TeamPresenter.new(@team, self).name %>, you will be pairing with
 <% buddies.person_presenters.each_with_index do |person, index| %>
   <% if index == @buddies.length - 1 %>
-  <%= person.name %> (<%= person.email %>)!
+  <%= person.name %> (<%= person.email %>) this week!
   <% else %>
   <%= person.name %> (<%= person.email %>) and
   <% end %>

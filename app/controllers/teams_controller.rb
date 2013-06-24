@@ -31,12 +31,16 @@ class TeamsController < ApplicationController
   def send_weekly_pairs
     team = Team.find_by_id(params[:id])
     @pairs = team.generate_weekly_pairs
-    @pairs.each do |pair|
-      pair.each do |person|
-        buddies = pair - [person]
-        TeamMemberPairMailer.delay.weekly_pair(person, buddies)
+    # respond_to do |format|
+      @pairs.each do |pair|
+        pair.each do |person|
+          buddies = pair - [person]
+          TeamMemberPairMailer.delay.weekly_pair(person, buddies, team)
+          # TeamMemberPairMailer.weekly_pair(person, buddies, team).deliver
+        end
       end
-    end
-    redirect_to request.referrer
+      # format.html{ render :show }
+    # end
+    # redirect_to request.referrer
   end
 end

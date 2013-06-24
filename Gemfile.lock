@@ -48,6 +48,9 @@ GEM
     celluloid (0.12.4)
       facter (>= 1.6.12)
       timers (>= 1.0.0)
+    clockwork (0.5.2)
+      activesupport
+      tzinfo (~> 0.3.35)
     coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -209,6 +212,7 @@ DEPENDENCIES
   activerecord-postgres-array
   bcrypt-ruby (~> 3.0.0)
   capybara!
+  clockwork
   coffee-rails (~> 3.2.1)
   database_cleaner
   debugger

@@ -29,8 +29,9 @@ class Team < ActiveRecord::Base
   end
 
   #a lot going on in this method. would like to refactor this.
+  #if using clockwork file, please remove #clean_weekly_pair_records!
   def generate_weekly_pairs
-    BuddyPair.clean_weekly_pair_records
+    clean_weekly_pair_records
     weekly_pairs = []
     self.buddy_pairs.shuffle.each do |pair_obj|
       pair_ids = pair_obj.permutation
@@ -80,5 +81,9 @@ private
       pairs.push orphans.pop(2)
     end
     pairs
+  end
+
+  def clean_weekly_pair_records
+    buddy_pairs.each { |pair| pair.people.delete_all }
   end
 end

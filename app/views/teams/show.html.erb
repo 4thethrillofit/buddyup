@@ -7,7 +7,7 @@
     <%= render :partial => 'new_member_form', locals: { team: @team } %>
   </div>
 
-  <%= link_to 'Send weekly pairs', send_weekly_pairs_team_path(@team), class: 'btn btn-warning' %>
+  <%= link_to 'Send weekly pairs', send_weekly_pairs_team_path(@team), class: 'btn btn-warning send-pair-email' %>
 
   <div class='team-members-show'>
     <h4>Members</h4>
