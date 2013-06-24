@@ -25,10 +25,13 @@ class TeamsController < ApplicationController
   def destroy
     Team.destroy(params[:id])
     flash[:success] = "Team successfully deleted."
-    redirect_to request.referrer
+    redirect_to root_path
   end
 
   def send_weekly_pairs
-    # raise params.inspect
+    team = Team.find_by_id(params[:id])
+    @pairs = team.generate_weekly_pairs
   end
 end
+
+

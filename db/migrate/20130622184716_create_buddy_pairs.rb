@@ -3,6 +3,7 @@ class CreateBuddyPairs < ActiveRecord::Migration
     create_table :buddy_pairs do |t|
       t.integer :team_id, :null => false
       t.integer_array :permutation, :null => false
+      t.boolean :has_been_assigned, :default => false, :null => false
       t.timestamps
     end
 

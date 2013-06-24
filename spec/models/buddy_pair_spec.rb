@@ -26,6 +26,7 @@ describe BuddyPair do
 
     describe 'associations' do
       it { should belong_to(:team) }
+      it { should have_many(:people) }
     end
   end
 

@@ -3,6 +3,15 @@ class BuddyPair < ActiveRecord::Base
   validates_presence_of :permutation, :team_id
   validate :check_data_type
   belongs_to :team
+  has_many :people
+  default_scope order(:id)
+
+  def self.clean_weekly_pair_records
+    BuddyPair.all.each do |pair|
+      pair.people.delete_all
+    end
+    # self.people.delete_all
+  end
 
 private
   def check_data_type

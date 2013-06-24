@@ -1,0 +1,11 @@
+<%= @pairs.inspect %>
+
+<ul>
+<% @pairs.each do |pair| %>
+  <li>
+    <% pair.each do |person| %>
+      <%= person.email %>,
+    <% end %>
+  </li>
+<% end %>
+</ul>

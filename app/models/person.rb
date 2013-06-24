@@ -10,6 +10,7 @@ class Person < ActiveRecord::Base
                     :uniqueness => true
   has_many :team_assignments, :dependent => :destroy
   has_many :teams, :through => :team_assignments
+  belongs_to :buddy_pair
   before_save :downcase_email
   after_save :assign_teams
 

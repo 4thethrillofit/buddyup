@@ -14,21 +14,22 @@
 ActiveRecord::Schema.define(:version => 20130622184716) do
 
   create_table "buddy_pairs", :force => true do |t|
-    t.integer       "team_id",     :null => false
-    t.integer_array "permutation", :null => false
-    t.datetime      "created_at",  :null => false
-    t.datetime      "updated_at",  :null => false
+    t.integer       "team_id",                              :null => false
+    t.integer_array "permutation",                          :null => false
+    t.boolean       "has_been_assigned", :default => false, :null => false
+    t.datetime      "created_at",                           :null => false
+    t.datetime      "updated_at",                           :null => false
   end
 
   add_index "buddy_pairs", ["permutation", "team_id"], :name => "index_buddy_pairs_on_permutation_and_team_id", :unique => true
   add_index "buddy_pairs", ["team_id"], :name => "index_buddy_pairs_on_team_id"
 
   create_table "people", :force => true do |t|
-    t.string   "name",       :null => false
-    t.string   "email",      :null => false
-    t.integer  "buddy_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "name",          :null => false
+    t.string   "email",         :null => false
+    t.integer  "buddy_pair_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "people", ["email"], :name => "index_people_on_email", :unique => true

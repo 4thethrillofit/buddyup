@@ -43,6 +43,7 @@ describe Person do
     describe 'associations' do
       it { should have_many(:team_assignments) }
       it { should have_many(:teams).through(:team_assignments) }
+      it { should belong_to(:buddy_pair) }
     end
   end
 
