@@ -41,14 +41,8 @@ class Team < ActiveRecord::Base
       weekly_pairs.push([person1, person2])
     end
     reset_pair_records if all_pairs_assigned?
-
-    if assign_any_orphan_members.count == 1
-      weekly_pairs.sample.concat(assign_any_orphan_members.flatten)
-    else
-      assign_any_orphan_members.each do |mem|
-        weekly_pairs.push(mem) if mem.count > 1
-        weekly_pairs.sample.concat(mem) if mem.count == 1
-      end
+    orphan_members.each do |member|
+      member.count == 1 ? weekly_pairs.sample.concat(member) : weekly_pairs.push(member)
     end
     weekly_pairs
   end
@@ -56,15 +50,6 @@ class Team < ActiveRecord::Base
   def destroy_related_pairs(member)
     #destroy_all or delete_all do not work here on the array
     self.buddy_pairs.select{|pair| pair.permutation.include?(member.id) }.each(&:delete)
-  end
-
-  def assign_any_orphan_members
-    orphans = members.where(:buddy_pair_id => nil).shuffle
-    pairs = []
-    while orphans.any?
-      pairs.push orphans.pop(2)
-    end
-    pairs
   end
 
 private
@@ -91,6 +76,11 @@ private
   end
 
   def orphan_members
-    members.where(:buddy_pair_id => nil)
+    orphans = members.where(:buddy_pair_id => nil).shuffle
+    pairs = []
+    while orphans.any?
+      pairs.push orphans.pop(2)
+    end
+    pairs
   end
 end
