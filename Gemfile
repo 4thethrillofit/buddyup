@@ -7,6 +7,8 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'activerecord-postgres-array'
+gem 'redis'
+gem 'sidekiq'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
