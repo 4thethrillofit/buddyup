@@ -10,7 +10,6 @@ class BuddyPair < ActiveRecord::Base
     BuddyPair.all.each do |pair|
       pair.people.delete_all
     end
-    # self.people.delete_all
   end
 
 private

@@ -29,7 +29,7 @@ class Team < ActiveRecord::Base
   end
 
   def generate_weekly_pairs
-    weekly_pair = []
+    weekly_pairs = []
     self.buddy_pairs.each do |pair_obj|
       pair_ids = pair_obj.permutation
       person1 = Person.find_by_id(pair_ids[0])
@@ -37,11 +37,11 @@ class Team < ActiveRecord::Base
       next if should_not_pair?(pair_obj, person1, person2)
       pair_obj.people.push(person1, person2)
       pair_obj.update_attribute(:has_been_assigned, true)
-      weekly_pair.push([person1, person2])
+      weekly_pairs.push([person1, person2])
     end
     BuddyPair.clean_weekly_pair_records
     reset_pair_records if all_pairs_assigned?
-    weekly_pair
+    weekly_pairs
   end
 
 private
