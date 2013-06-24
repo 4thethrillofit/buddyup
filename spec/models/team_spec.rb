@@ -65,6 +65,14 @@ describe Team do
       team.generate_pair_records
       team.generate_weekly_pairs.count.should eq 2
     end
+    it 'should not have any single person pairs' do
+      team = create(:team)
+      team.members << member1
+      team.members << member2
+      team.members << member3
+      team.generate_pair_records
+      team.generate_weekly_pairs.select { |p| p.count == 1 }.should_not be_any
+    end
   end
 
   describe 'destroy_related_pairs' do

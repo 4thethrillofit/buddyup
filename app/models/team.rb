@@ -28,6 +28,7 @@ class Team < ActiveRecord::Base
     end
   end
 
+  #a lot going on in this method. would like to refactor this.
   def generate_weekly_pairs
     BuddyPair.clean_weekly_pair_records
     weekly_pairs = []
@@ -59,11 +60,8 @@ private
   end
 
   def should_not_pair?(pair_obj, person1, person2)
-    if pair_obj.has_been_assigned || person1.buddy_pair || person2.buddy_pair
-      true
-    else
-      false
-    end
+    return true if pair_obj.has_been_assigned || person1.buddy_pair || person2.buddy_pair
+    false
   end
 
   def all_pairs_assigned?
