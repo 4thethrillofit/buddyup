@@ -41,8 +41,16 @@ class Team < ActiveRecord::Base
       weekly_pairs.push([person1, person2])
     end
     reset_pair_records if all_pairs_assigned?
-    orphans = assign_any_orphan_members
-    weekly_pairs += orphans
+
+    if assign_any_orphan_members.count == 1
+      weekly_pairs.sample.concat(assign_any_orphan_members.flatten)
+    else
+      assign_any_orphan_members.each do |mem|
+        weekly_pairs.push(mem) if mem.count > 1
+        weekly_pairs.sample.concat(mem) if mem.count == 1
+      end
+    end
+    weekly_pairs
   end
 
   def destroy_related_pairs(member)
