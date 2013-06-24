@@ -34,7 +34,7 @@ class TeamsController < ApplicationController
     @pairs.each do |pair|
       pair.each do |person|
         buddies = pair - [person]
-        TeamMemberPairMailer.delay.weekly_pair(person, buddies).deliver
+        TeamMemberPairMailer.delay.weekly_pair(person, buddies)
       end
     end
     redirect_to request.referrer
