@@ -1,0 +1,21 @@
+<% buddies = PeoplePresenter.new(@buddies, self) %>
+
+<p>Hello <%= PersonPresenter.new(@person, self).name %>,</p>
+
+<p>
+This week, you will be pairing with
+<% buddies.person_presenters.each_with_index do |person, index| %>
+  <% if index == @buddies.length - 1 %>
+  <%= person.name %> (<%= person.email %>)!
+  <% else %>
+  <%= person.name %> (<%= person.email %>) and
+  <% end %>
+<% end %>
+</p>
+
+<p><%= link_to 'Here', "http://sf.funcheap.com/" %> are some fun things to do. Please coordinate accordingly :)</p>
+
+<div>
+Cheers,<br />
+PairBot
+</div>

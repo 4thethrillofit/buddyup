@@ -4,7 +4,6 @@ class BuddyPair < ActiveRecord::Base
   validate :check_data_type
   belongs_to :team
   has_many :people
-  # default_scope order(:id)
 
   def self.clean_weekly_pair_records
     BuddyPair.all.each do |pair|

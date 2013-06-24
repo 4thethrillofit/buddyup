@@ -31,13 +31,12 @@ class TeamsController < ApplicationController
   def send_weekly_pairs
     team = Team.find_by_id(params[:id])
     @pairs = team.generate_weekly_pairs
+    @pairs.each do |pair|
+      pair.each do |person|
+        buddies = pair - [person]
+        TeamMemberPairMailer.weekly_pair(person, buddies).deliver
+      end
+    end
+    # redirect_to request.referrer
   end
 end
-
-pairs = []
-a = [1,2,3,4]
-a.shuffle
-while a.any?
-  pairs.push a.pop(2)
-end
-pairs
