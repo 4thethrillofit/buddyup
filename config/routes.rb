@@ -9,4 +9,6 @@ Buddyup::Application.routes.draw do
       get 'show_weekly_pairs' => 'teams#show_weekly_pairs'
     end
   end
+
+  get '/about' => 'application#about'
 end
