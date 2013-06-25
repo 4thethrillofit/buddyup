@@ -8,7 +8,9 @@
   </div>
 
   <%= link_to 'Send weekly pairs', send_weekly_pairs_team_path(@team), class: 'btn btn-warning send-pair-email', remote: true %>
-
+  <% if ENV['RAILS_ENV'] == 'development' %>
+    <%= link_to 'Generate weekly pairs (debug only)', show_weekly_pairs_team_path(@team), class: 'btn send-pair-email' %>
+  <% end %>
   <div class='team-members-show'>
     <h4>Members</h4>
     <%= render :partial => 'team_members_list', locals: { team: team } %>

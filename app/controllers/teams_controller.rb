@@ -30,7 +30,7 @@ class TeamsController < ApplicationController
 
   def send_weekly_pairs
     team = Team.find_by_id(params[:id])
-    @pairs = team.generate_weekly_pairs
+    pairs = team.generate_weekly_pairs
     respond_to do |format|
       @pairs.each do |pair|
         pair.each do |person|
@@ -40,5 +40,12 @@ class TeamsController < ApplicationController
       end
       format.html{ 200 }
     end
+  end
+
+  #debugging only. Can generate inifinite number of buddies.
+  def show_weekly_pairs
+    BuddyPair.clean_weekly_pair_records
+    @team = Team.find_by_id(params[:id])
+    @pairs = @team.generate_weekly_pairs
   end
 end

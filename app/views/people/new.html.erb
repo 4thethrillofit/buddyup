@@ -3,12 +3,14 @@
   <%= render 'shared/error_messages', :target => @person %>
   <%= f.text_field :name, placeholder: 'Name' %>
   <%= f.text_field :email, placeholder: 'Email' %>
-  <%= f.text_field :team_names, placeholder: "Team Names" %>
+  <%= f.text_field :team_names, placeholder: "Team Names", data: {provide: "typeahead"}, class: "tags-input" %>
   <%= f.submit "Submit", class: 'btn btn-warning' %>
 <% end %>
 </div>
-<section class='team-list'></section>
+<section class='suggestion-box'>
 
-<% content_for :js_footer do%>
-  PageContent.teamSuggestions = <%= @teams.to_json.html_safe %>;
-<% end %>
+</section>
+
+<script type="text/javascript">
+  PageContent.suggestions = <%= @teams.map(&:name).to_json.html_safe %>;
+</script>

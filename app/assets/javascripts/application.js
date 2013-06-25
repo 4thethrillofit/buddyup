@@ -14,3 +14,22 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require_tree .
+
+$(document).ready(function(){
+
+  PageContent.suggestionBox = $('.suggestion-box');
+  PageContent.removeSuggestion = function(teamName){
+    var index = this.suggestions.indexOf(teamName);
+    this.suggestions.splice(index, 1);
+  };
+
+  $('input.tags-input').typeahead({
+    source: PageContent.suggestions,
+    updater: function(item){
+      var teamLabel = $("<span class='label label-success'>"+item+"<a href='#remove' class='remove-tag'> X </a></span>")
+      $('section.suggestion-box').append(teamLabel, ' ');
+      PageContent.removeSuggestion(item);
+    }
+  });
+
+});

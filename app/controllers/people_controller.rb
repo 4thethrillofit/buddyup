@@ -5,6 +5,7 @@ class PeopleController < ApplicationController
 
   def new
     @person = Person.new
+    #beaming down all teams for auto-complete feature.
     @teams = Team.all
   end
 
