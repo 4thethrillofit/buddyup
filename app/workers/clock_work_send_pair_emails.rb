@@ -4,18 +4,16 @@ require_relative '../../config/environment'
 
 include Clockwork
 
-every(5.minute, "Sending weekly pair emails") do
+every(7.days, "Sending weekly pair emails", :at => '17:00') do
   puts "Sending weekly pair emails"
   Team.all.each do |team|
     team.generate_weekly_pairs.each do |pair|
       pair.each do |person|
         buddies = pair - [person]
-        TeamMemberPairMailer.delay.weekly_pair(person, buddies)
+        TeamMemberPairMailer.delay.weekly_pair(person, buddies, team)
       end
     end
   end
   BuddyPair.clean_weekly_pair_records
   puts "Finished sending email."
 end
-
-# , :at => '17:00'

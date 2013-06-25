@@ -1,0 +1,33 @@
+OVERVIEW
+This is an app for pairing up team members for get to know you gatherings. Also excellent for generating pairs for pair-programming sessions. In teams with even number of members, all members will be uniquely paired before pairs are re-used. In odd member teams, the odd man/woman out is randomly added to one of the pairs.
+
+The site is made as kind of an admin panel, meaning regular employees usually won't see the interface. Right now the pairing emails are sent out either manually or through a clockwork cron job file. Alternatively, I would put the clockwork code in a rake task and use the Heroku scheduler to run the rake task weekly.
+
+USER STORIES
+- The user can create a new person and assign him/her to a team before submitting.
+- The user can create a new team (as long as the team name is unique).
+- The user can delete an existing team.
+- The user can add a new team member through the person's email. A person can belong to multiple teams.
+- The user can remove a person from a team.
+- The user can manually send the weekly pairing emails (boot up sidekiq). The mailer will send an email to each team member telling them who their pair(s) will be.
+- The mailer can be automated through a cron job. Go to the 'worker' folder and run 'clockwork clock_work_send_pair_emails.rb'
+
+COMMANDS
+In order for the mailer to run properly, run these commands in separate terminals:
+rails s
+redis-server
+bundle exec sidekiq
+clockwork clock_work_send_pair_emails.rb
+(make sure to run clock work on a Friday).
+run rake db:seed for some sample data.
+
+TESTING
+simplecov test coverage: 92.8%. All tests should be passing.
+The models and presenters code was written using mostly TDD approach.
+- The models are well tested.
+- The presenter classes are well tested.
+- View and Controller testing are replaced with capybara integration tests.
+- Testing gems used: factory_girl, shoulda-matchers, capybara, database_cleaner, launchy, guard.
+
+STYLEING
+- Very little CSS work was done here due to the lack of time. If interested in my design intuitions, check out boombox.io and makerspark.herokuapp.com
