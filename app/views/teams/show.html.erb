@@ -5,6 +5,7 @@
 
   <div class='new-member-form'>
     <%= render :partial => 'new_member_form', locals: { team: @team } %>
+    <section class='suggestion-box'></section>
   </div>
 
   <%= link_to 'Send weekly pairs', send_weekly_pairs_team_path(@team), class: 'btn btn-warning send-pair-email', remote: true %>
@@ -15,5 +16,4 @@
     <h4>Members</h4>
     <%= render :partial => 'team_members_list', locals: { team: team } %>
   </div>
-
 </div>

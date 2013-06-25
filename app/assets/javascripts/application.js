@@ -26,10 +26,14 @@ $(document).ready(function(){
   $('input.tags-input').typeahead({
     source: PageContent.suggestions,
     updater: function(item){
-      var teamLabel = $("<span class='label label-success'>"+item+"<a href='#remove' class='remove-tag'> X </a></span>")
+      var teamLabel = $("<span class='label label-success'><span class='tag-text'>"+item+"</span><a href='#remove' class='remove-tag'> X </a></span>")
       $('section.suggestion-box').append(teamLabel, ' ');
       PageContent.removeSuggestion(item);
     }
+  });
+
+  $('.suggestion-box').on('click', 'a.remove-tag', function(e){
+    $(this).closest('span.label').remove();
   });
 
 });

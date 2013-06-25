@@ -1,15 +1,18 @@
-<div class='new-person-form'>
+<div class='row new-person-form'>
+<div class='span12'>
 <%= form_for @person do |f| %>
   <%= render 'shared/error_messages', :target => @person %>
   <%= f.text_field :name, placeholder: 'Name' %>
   <%= f.text_field :email, placeholder: 'Email' %>
-  <%= f.text_field :team_names, placeholder: "Team Names", data: {provide: "typeahead"}, class: "tags-input" %>
+  <div class='row team-box'>
+  <%= f.text_field :team_names, type: 'hidden', class: "teams" %>
+    <input type='text' class = "tags-input" placeholder="Team Names" data-provide='typeahead' />
+    <section class='suggestion-box'></section>
+  </div>
   <%= f.submit "Submit", class: 'btn btn-warning' %>
 <% end %>
 </div>
-<section class='suggestion-box'>
-
-</section>
+</div>
 
 <script type="text/javascript">
   PageContent.suggestions = <%= @teams.map(&:name).to_json.html_safe %>;

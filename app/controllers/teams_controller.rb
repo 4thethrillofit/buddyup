@@ -42,7 +42,7 @@ class TeamsController < ApplicationController
     end
   end
 
-  #debugging only. Can generate inifinite number of buddies.
+  #debugging only. Can generate inifinite number of buddy pairs.
   def show_weekly_pairs
     BuddyPair.clean_weekly_pair_records
     @team = Team.find_by_id(params[:id])

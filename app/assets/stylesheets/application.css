@@ -19,3 +19,12 @@
 ul li {
   list-style: none;
 }
+
+a.remove-tag {
+  text-decoration: none;
+  color: white;
+}
+
+section.suggestion-box {
+  /*min-height: 20px;*/
+}
