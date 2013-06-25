@@ -2,7 +2,7 @@ class TeamPresenter < BasePresenter
   presents :team
 
   def name
-    team.name.capitalize
+    team.name.titleize
   end
 
   def members

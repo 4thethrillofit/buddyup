@@ -1,7 +1,4 @@
 <div class='row people'>
-  <% #present @people do |person| %>
-
-  <% #end %>
   <h3>Everyone</h3>
   <ul>
   <% PeoplePresenter.new(@people, self).person_presenters.each do |person| %>

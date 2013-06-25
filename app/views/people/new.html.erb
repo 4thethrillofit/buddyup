@@ -1,3 +1,4 @@
+<h3>Create a new person</h3>
 <div class='row new-person-form'>
 <div class='span12'>
 <%= form_for @person do |f| %>
@@ -6,7 +7,7 @@
   <%= f.text_field :email, placeholder: 'Email' %>
   <div class='row team-box'>
   <%= f.text_field :team_names, type: 'hidden', class: "teams" %>
-    <input type='text' class = "tags-input" placeholder="Team Names" data-provide='typeahead' />
+    <input type='text' class = "tags-input" id='team-tags' placeholder="Team Names" data-provide='typeahead' />
     <section class='suggestion-box'></section>
   </div>
   <%= f.submit "Submit", class: 'btn btn-warning' %>

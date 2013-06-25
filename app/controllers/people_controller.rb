@@ -10,7 +10,6 @@ class PeopleController < ApplicationController
   end
 
   def create
-    raise params.inspect
     @person = Person.new(params[:person])
     if @person.save
       flash[:success] = "Person successfully created."

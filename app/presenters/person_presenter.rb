@@ -2,7 +2,7 @@ class PersonPresenter < BasePresenter
   presents :person
 
   def name
-    person.name.capitalize
+    person.name.titleize
   end
 
   def email

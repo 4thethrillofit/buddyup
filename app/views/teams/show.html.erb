@@ -1,7 +1,7 @@
 <div class='row team-members'>
   <% team = TeamPresenter.new(@team, self) %>
   <h3>Team: <%= team.name %></h3>
-  <%= link_to 'Delete Team', team_path(@team), method: 'DELETE', class: "btn btn-danger" %>
+  <%= link_to 'Delete Team', team_path(@team), method: 'DELETE', class: "btn btn-danger delete-team" %>
 
   <div class='new-member-form'>
     <%= render :partial => 'new_member_form', locals: { team: @team } %>
