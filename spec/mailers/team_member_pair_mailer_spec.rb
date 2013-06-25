@@ -3,7 +3,8 @@ require "spec_helper"
 describe TeamMemberPairMailer do
   let(:person) { build(:person) }
   let(:buddy) { build(:person) }
-  subject(:mailer) { TeamMemberPairMailer.weekly_pair(person, [buddy]) }
+  let(:team) { build(:team) }
+  subject(:mailer) { TeamMemberPairMailer.weekly_pair(person, [buddy], team) }
 
   describe 'send weekly pairs' do
     it 'sends weekly buddies to people' do

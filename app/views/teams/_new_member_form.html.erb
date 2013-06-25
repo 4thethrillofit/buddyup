@@ -1,6 +1,6 @@
 <%= form_for :team, url: team_team_assignments_path(team) do |f| %>
   <%= render 'shared/error_messages', :target => team %>
-  <%= f.label "Add members by email:" %>
+  <%= f.label "Add new members by email:" %>
   <%= f.text_field :member_email, placeholder: "Member Email" %>
   <%= f.submit "Submit", class: 'btn btn-warning' %>
 <% end %>

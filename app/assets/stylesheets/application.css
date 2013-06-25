@@ -12,6 +12,10 @@
  *= require_tree .
  */
 
+body {
+  background-color: rgb(248, 248, 248);
+}
+
 .main.container {
   margin-top: 60px;
 }
@@ -23,4 +27,8 @@ ul li {
 a.remove-tag {
   text-decoration: none;
   color: white;
+}
+
+form input.btn {
+  margin-bottom: 10px;
 }

@@ -1,5 +1,14 @@
 <ul>
   <% team.members.each do |member| %>
-    <li><%= member.name %>, <%= member.email %> <%= link_to "Remove Member", team_team_assignment_path(team.object, member.object), method: "DELETE", class: "btn btn-danger" %></li>
+  <div class='row'>
+    <li>
+      <div class='span3'>
+      <%= member.name %>, <%= member.email %>
+      </div>
+      <div class='span2'>
+      <%= link_to "Remove Member", team_team_assignment_path(team.object, member.object), method: "DELETE", class: "btn btn-small btn-info" %>
+      </div>
+    </li>
+  </div>
   <% end %>
 </ul>

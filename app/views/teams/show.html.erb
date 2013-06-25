@@ -1,7 +1,7 @@
 <div class='row team-members'>
   <% team = TeamPresenter.new(@team, self) %>
   <h3>Team: <%= team.name %></h3>
-  <%= link_to 'Delete Team', team_path(@team), method: 'DELETE', class: "btn btn-danger delete-team" %>
+  <%= link_to 'Delete Team', team_path(@team), method: 'DELETE', class: "btn btn-small btn-info delete-team" %>
 
   <div class='new-member-form'>
     <%= render :partial => 'new_member_form', locals: { team: @team } %>
@@ -9,11 +9,13 @@
   </div>
 
   <%= link_to 'Send weekly pairs', send_weekly_pairs_team_path(@team), class: 'btn btn-warning send-pair-email', remote: true %>
+
   <% if ENV['RAILS_ENV'] == 'development' %>
     <%= link_to 'Generate weekly pairs (debug only)', show_weekly_pairs_team_path(@team), class: 'btn send-pair-email' %>
   <% end %>
+
   <div class='team-members-show'>
-    <h4>Members</h4>
+    <h4>Current Team Members</h4>
     <%= render :partial => 'team_members_list', locals: { team: team } %>
   </div>
 </div>

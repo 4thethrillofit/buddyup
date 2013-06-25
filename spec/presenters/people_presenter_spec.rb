@@ -14,7 +14,7 @@ describe PeoplePresenter do
 
   describe '#names' do
     it 'should return an array of capitalized names' do
-      presenter.names.should eq [person1.name.capitalize, person2.name.capitalize]
+      presenter.names.should eq [person1.name.titleize, person2.name.titleize]
     end
   end
 

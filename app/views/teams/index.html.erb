@@ -1,5 +1,6 @@
 <div class='row teams'>
-  <h3>Teams</h3>
+  <h3>All Teams</h3>
+  <p>Select a team to see its current members</p>
   <ul>
     <% TeamsPresenter.new(@teams, self).team_presenters.each do |team| %>
       <li><%= link_to team.name, team_path(team.object) %></li>
