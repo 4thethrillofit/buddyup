@@ -1,9 +1,10 @@
 Created by Feifan Wang, feifanw@gmail.com, github.com/4thethrillofit
 
 OVERVIEW
-This is an app for pairing up team members for get to know you gatherings. Also excellent for generating pairs for pair-programming sessions. In teams with even number of members, all members will be uniquely paired before pairs are re-used. In odd member teams, the odd man/woman out is randomly added to one of the pairs.
 
-The pairing is not 100% guaranteed to be unique since orphan members can appear through certain combination of pairing permutations when there many pairs. When this happened, the orphan members are randomly shuffled and paired together.
+This is an app for pairing up team members for get to know you 1 on 1 sessions. Also excellent for generating pairs for pair-programming sessions. In teams with even number of members, all members will be uniquely paired before pairs are re-used. In odd member teams, the odd man/woman out is randomly added to one of the pairs.
+
+The pairing is not 100% guaranteed to be unique since orphan members can appear through certain combination of pairing permutations when there are many pairs. When this happened, the orphan members are randomly shuffled and paired together.
 
 The site is made as kind of an admin panel, meaning regular employees usually won't see the interface. Right now the pairing emails are sent out either manually or through a clockwork cron job file. Alternatively, I would put the clockwork code in a rake task and use the Heroku scheduler to run the rake task weekly.
 
@@ -17,8 +18,9 @@ USER STORIES
 - The mailer can be automated through a cron job. Go to the 'worker' folder and run 'clockwork clock_work_send_pair_emails.rb'
 
 COMMANDS
-In order for the mailer to run properly, run these commands in separate terminals:
-rails s
+
+In order for the mailer to run properly, run these commands in separate terminal sessions/tmux panes:
+bundle exec rails s
 redis-server
 bundle exec sidekiq
 clockwork clock_work_send_pair_emails.rb
@@ -26,6 +28,7 @@ clockwork clock_work_send_pair_emails.rb
 run rake db:seed for some sample data.
 
 TESTING
+
 simplecov test coverage: 92.8%. All tests should be passing.
 The models and presenters code was written using mostly TDD approach.
 - The models are well tested.
@@ -34,4 +37,5 @@ The models and presenters code was written using mostly TDD approach.
 - Testing gems used: factory_girl, shoulda-matchers, capybara, database_cleaner, launchy, guard.
 
 STYLEING
+
 - Very little CSS work was done here due to the lack of time. If interested in my design intuitions, check out boombox.io and makerspark.herokuapp.com
